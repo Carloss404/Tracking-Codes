@@ -1,0 +1,107 @@
+<script>
+  document
+    .querySelector("button[type='submit']")
+    .addEventListener("click", function (event) {
+      var fname = document.querySelectorAll("#full_name")[1].value;
+      var phone = document.querySelectorAll("#phone")[1].value;
+      var email = document.querySelectorAll("input[type='email']")[1].value;
+      var message = document.querySelectorAll(
+        "textarea[name='wDtn0tpNB8pgYneArE6C']"
+      )[1].value;
+
+      if (name != "" && email != "" && phone != "" && message != "") {
+        __ctm.form.track(
+          "app.calltrackingmetrics.com", // the capture host
+          "FRT472ABB2C5B9B141A03B4AE8C103D002CE88A65D7B034948F37EF649C53E67EF5", // this FormReactor
+          "4046475765",
+          {
+            country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
+            name: fname,
+            phone: phone,
+            email: email,
+            custom: {
+              Message: message,
+            },
+          }
+        );
+      }
+    });
+</script>
+
+<script>
+  // Ensure the Data Layer is initialized
+  window.dataLayer = window.dataLayer || [];
+
+  // Add event listener to the submit button
+  document
+    .querySelector("#gform_2")
+    .addEventListener("submit", function (event) {
+      // Prevent the form from submitting (optional, depending on your use case)
+      event.preventDefault();
+
+      // Get form field values
+      var fname = document.querySelector("#input_2_1_3").value;
+      var email = document.querySelector("#input_2_3").value;
+      var phone = document.querySelector("#input_2_4").value;
+      var message = document.querySelector("#input_2_11").value;
+
+      // Validate form fields
+      if (fname != "" && email != "" && phone != "" && message != "") {
+        // Push the event and form data to the Data Layer
+        window.dataLayer.push({
+          event: "contact_form", // Custom event name
+          formData: {
+            fullName: fname,
+            phone: phone,
+            email: email,
+            postalCode: postal_code,
+          },
+        });
+
+        // Optionally, submit the form programmatically if needed
+        // document.querySelectorAll("form")[1].submit();
+      } else {
+        console.log("Please fill out all fields.");
+      }
+    });
+</script>
+
+<script>
+  // Ensure the Data Layer is initialized
+  window.dataLayer = window.dataLayer || [];
+
+  // Add event listener to the submit button
+  document
+    .querySelectorAll("button[type='submit']")[1]
+    .addEventListener("click", function (event) {
+      // Prevent the form from submitting (optional, depending on your use case)
+      event.preventDefault();
+
+      // Get form field values
+      var fname = document.querySelectorAll("#full_name")[1].value;
+      var phone = document.querySelectorAll("#phone")[1].value;
+      var email = document.querySelectorAll("input[type='email']")[1].value;
+      var postal_code = document.querySelectorAll(
+        "input[name='postal_code']"
+      )[1].value;
+
+      // Validate form fields
+      if (fname !== "" && phone !== "" && email !== "" && postal_code !== "") {
+        // Push the event and form data to the Data Layer
+        window.dataLayer.push({
+          event: "contact_form", // Custom event name
+          formData: {
+            fullName: fname,
+            phone: phone,
+            email: email,
+            postalCode: postal_code,
+          },
+        });
+
+        // Optionally, submit the form programmatically if needed
+        // document.querySelectorAll("form")[1].submit();
+      } else {
+        console.log("Please fill out all fields.");
+      }
+    });
+</script>
