@@ -1,22 +1,23 @@
 <script>
-  document
-    .querySelector("button[type='submit']")
-    .addEventListener("click", function (event) {
-      var fname = document.querySelectorAll("#full_name")[1].value;
-      var phone = document.querySelectorAll("#phone")[1].value;
-      var email = document.querySelectorAll("input[type='email']")[1].value;
-      var message = document.querySelectorAll(
-        "textarea[name='wDtn0tpNB8pgYneArE6C']"
-      )[1].value;
+  var submitBtn = document.querySelectorAll("button[type='submit']")[1];
 
-      if (name != "" && email != "" && phone != "" && message != "") {
+  submitBtn.addEventListener("click", function () {
+    var name = document.querySelectorAll("#full_name")[1].value;
+    var phone = document.querySelectorAll("#phone")[1].value;
+    var email = document.querySelectorAll("input[type='email']")[1].value;
+    var message = document.querySelectorAll(
+      "textarea[name='wDtn0tpNB8pgYneArE6C']"
+    )[1].value;
+
+    if (name && phone && email && message) {
+      if (typeof __ctm !== "undefined" && __ctm.form) {
         __ctm.form.track(
-          "app.calltrackingmetrics.com", // the capture host
-          "FRT472ABB2C5B9B141A03B4AE8C103D002CE88A65D7B034948F37EF649C53E67EF5", // this FormReactor
+          "app.calltrackingmetrics.com",
+          "FRT472ABB2C5B9B141A03B4AE8C103D002CE88A65D7B034948F37EF649C53E67EF5",
           "4046475765",
           {
             country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
-            name: fname,
+            name: name,
             phone: phone,
             email: email,
             custom: {
@@ -25,7 +26,8 @@
           }
         );
       }
-    });
+    }
+  });
 </script>
 
 <script>
@@ -78,12 +80,12 @@
       event.preventDefault();
 
       // Get form field values
-      var fname = document.querySelectorAll("#full_name")[1].value;
-      var phone = document.querySelectorAll("#phone")[1].value;
-      var email = document.querySelectorAll("input[type='email']")[1].value;
-      var postal_code = document.querySelectorAll(
+      var fname = document.querySelector("#full_name").value;
+      var phone = document.querySelector("#phone").value;
+      var email = document.querySelector("input[type='email']").value;
+      var postal_code = document.querySelector(
         "input[name='postal_code']"
-      )[1].value;
+      ).value;
 
       // Validate form fields
       if (fname !== "" && phone !== "" && email !== "" && postal_code !== "") {
@@ -104,4 +106,34 @@
         console.log("Please fill out all fields.");
       }
     });
+</script>
+
+<script>
+  document.querySelector("#form_kxp9g").addEventListener("submit", function () {
+    var name = document.querySelector("#field_6vh4o").value;
+    var phone = document.querySelector("#field_t33wc").value;
+    var email = document.querySelector("#field_7kmn").value;
+    var message = document.querySelector("#field_w2bad").value;
+
+    if (name && phone && email) {
+      if (typeof __ctm !== "undefined" && __ctm.form) {
+        __ctm.form.track(
+          "app.calltrackingmetrics.com", // the capture host
+          "FRT472ABB2C5B9B141A043AB529D1B39EBFAF17738D52D172B8AC4E87E013652B70", // this FormReactor
+          "6267844113",
+          {
+            country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
+            name: name,
+            phone: phone,
+            email: email,
+            custom: {
+              message: message,
+            },
+          }
+        );
+
+        alert("Form submitted successfully!");
+      }
+    }
+  });
 </script>
