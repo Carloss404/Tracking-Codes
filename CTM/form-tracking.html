@@ -137,3 +137,49 @@
     }
   });
 </script>
+
+<script>
+  var button = document.querySelector(
+    "button[name='et_builder_submit_button']"
+  );
+
+  button.addEventListener("click", function (event) {
+    alert("Button click event triggered.");
+
+    event.preventDefault(); // Prevent the default form submission
+
+    var name = document.querySelector("#et_pb_contact_name_0").value.trim();
+    var email = document.querySelector("#et_pb_contact_email_0").value.trim();
+    var phone = document.querySelector("#et_pb_contact_phone_0").value.trim();
+    var message = document
+      .querySelector("#et_pb_contact_message_0")
+      .value.trim();
+
+    if (name && email && phone) {
+      __ctm.form.track(
+        "app.calltrackingmetrics.com", // The capture host
+        "FRT472ABB2C5B9B141A01AE4F3864415F03643D7FE2F060A1852ECA37CC5AFBCC09", // FormReactor ID
+        "2393479271", // Campaign ID
+        {
+          country_code: "1", // Country code (e.g., +1 for US)
+          name: name,
+          phone: phone,
+          email: email,
+          custom: {
+            message: message,
+          },
+        },
+        function (response) {
+          if (response && response.success) {
+            alert("CTM response: Form submitted successfully!");
+            button.submit();
+          } else {
+            alert(
+              "CTM response: An error occurred while submitting the form. Please try again."
+            );
+          }
+        }
+      );
+    }
+  });
+</script>
