@@ -1,0 +1,47 @@
+ENHANCED CONVERSION FOR E-COMMERCE Please copy and paste the following code into the
+<head></head> tags to install the Google Ads Tag with the E.C. variable:
+
+<!-- Google tag (gtag.js) -->
+<script
+	async
+	src="https://www.googletagmanager.com/gtag/js?id=AW-GOOGLE_ADS_CONVERSION_ID"
+></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+
+	gtag("config", "AW-GOOGLE_ADS_CONVERSION_ID", { allow_enhanced_conversions: true });
+</script>
+Please execute the following code every time a transaction is completed successfully, and replace
+the test value with your store variables containing the corresponding information of each user and
+transaction.
+
+<script type="text/javascript">
+	//Customer data
+	var enhanced_conversion_data = {
+		first_name: "REPLACE WITH YOUR VARIABLE",
+		last_name: "REPLACE WITH YOUR VARIABLE",
+		email: "REPLACE WITH YOUR VARIABLE",
+		phone_number: "REPLACE WITH YOUR VARIABLE",
+		home_address: {
+			street: "REPLACE WITH YOUR VARIABLE",
+			city: "REPLACE WITH YOUR VARIABLE",
+			region: "REPLACE WITH YOUR VARIABLE",
+			postal_code: "REPLACE WITH YOUR VARIABLE",
+			country: "REPLACE WITH YOUR VARIABLE",
+		},
+	};
+</script>
+
+<!-- Event snippet for Transactions conversion page -->
+<script>
+	gtag("event", "conversion", {
+		send_to: "AW-GOOGLE_ADS_CONVERSION_ID/GOOGLE_ADS_CONVERSION_LABEL",
+		value: "REPLACE WITH YOUR VARIABLE",
+		currency: "REPLACE WITH YOUR VARIABLE",
+		transaction_id: "REPLACE WITH YOUR VARIABLE",
+	});
+</script>
