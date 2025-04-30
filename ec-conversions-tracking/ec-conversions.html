@@ -45,3 +45,32 @@ transaction.
 		transaction_id: "REPLACE WITH YOUR VARIABLE",
 	});
 </script>
+
+<!-- GA4 code snippet -->
+<script>
+	window.dataLayer = window.dataLayer || [];
+	dataLayer.push({
+		event: "purchase",
+		ecommerce: {
+			purchase: {
+				transaction_id: TRANSACTION_ID_VARIABLE,
+				affiliation: "online store",
+				value: VALUE_VARIABLE,
+				tax: TAX_VARIABLE,
+				shipping: SHIPPING_VARIABLE,
+				currency: "USD",
+
+				items: [
+					{
+						item_name: PRODUCT_NAME_VARIABLE,
+						item_id: PRODUCT_ID_VARIABLE,
+						price: PRODUCT_PRICE_VARIABLE,
+						item_brand: PRODUCT_BRAND_VARIABLE,
+						item_category: PRODUCT_CATEGORY_VARIABLE,
+						quantity: PRODUCT_QUANTITY_VARIABLE,
+					},
+				],
+			},
+		},
+	});
+</script>
