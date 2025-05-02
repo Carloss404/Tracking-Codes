@@ -1,4 +1,4 @@
-var btn = document.getElementById("tmp_button-38751");
+var btn = document.querySelector("a[href='#submit-form']");
 
 btn.addEventListener("click", function () {
 	var firstName = document.querySelector("input[name='first_name']").value;
