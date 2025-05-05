@@ -2,7 +2,7 @@ var form = document.querySelector("form.simple");
 
 form.addEventListener("submit", function () {
 	var name = document.querySelector("input[name='name']").value;
-	var email = document.querySelector("input[name='email']").value;
+	var email = document.querySelector("input[placeholder='Email']").value;
 	var phone = document.querySelector("input[name='phone']").value;
 	var message = document.querySelector("textarea[name='Questions/Comments']").value;
 
