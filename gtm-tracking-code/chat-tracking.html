@@ -1,0 +1,38 @@
+<script>
+	window.fcSettings = {
+		onInit: function () {
+			if (typeof ga === "function") {
+				ga("create", "<GA TRACKING ID>", "auto", "FreshchatEvents");
+				window.fcWidget.on("widget:opened", function (resp) {
+					ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "Widget Open");
+				});
+				window.fcWidget.on("widget:closed", function (resp) {
+					ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "Widget Close");
+				});
+				window.fcWidget.on("message:received", function (resp) {
+					ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "Received");
+				});
+				window.fcWidget.on("message:sent", function (resp) {
+					ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "Sent");
+				});
+				window.fcWidget.on("user:statechange", function (resp) {
+					if (resp && resp.data && resp.data.userState === "created") {
+						ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "User Create");
+					}
+					if (resp && resp.data && resp.data.userState === "loaded") {
+						ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "User Loaded");
+					}
+					if (resp && resp.data && resp.data.userState === "identified") {
+						ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "User Identified");
+					}
+					if (resp && resp.data && resp.data.userState === "restored") {
+						ga("FreshchatEvents.send", "event", "Freshchat widget", "GadgetGod", "User Restored");
+					}
+				});
+			} else {
+				console.log("Google Analytics not loaded");
+			}
+		},
+	};
+</script>
+<script src="//fw-cdn.com/1*****7/2*****4.js" chat="true"></script>
