@@ -43,10 +43,15 @@ function restAPIFormTracking() {
 		document.getElementById("gform_5") ||
 		document.getElementById("gform_1");
 
-	function getUrlParameter(name) {
-		var regex = new RegExp("[?&]" + name + "=([^&#]*)");
-		var results = regex.exec(window.location.search);
-		return results ? decodeURIComponent(results[1].replace(/\+/g, " ")) : "";
+	var accessKey;
+	var secretKey;
+
+	if (form) {
+		function getUrlParameter(name) {
+			var regex = new RegExp("[?&]" + name + "=([^&#]*)");
+			var results = regex.exec(window.location.search);
+			return results ? decodeURIComponent(results[1].replace(/\+/g, " ")) : "";
+		}
 	}
 
 	form.addEventListener("submit", function (event) {

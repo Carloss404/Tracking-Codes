@@ -1,19 +1,23 @@
-var form = document.getElementById("form_contact-form");
+// Contact Form
+document.addEventListener("DOMContentLoaded", function () {
+	document.querySelector(".frm_button_submit").addEventListener("click", function () {
+		var name = document.querySelector("input[name='item_meta[1]']").value;
+		var phone = document.querySelector("input[name='item_meta[7]']").value;
+		var email = document.querySelector("input[name='item_meta[3]']").value;
+		var message = document.querySelector("textarea[name='item_meta[5]']").value;
 
-form.addEventListener("submit", function () {
-	var name = document.getElementById("field_qh4icy").value;
-	var phone = document.getElementById("field_p3m8c").value;
-	var email = document.getElementById("field_29yf4d").value;
-	var message = document.getElementById("field_9jv0r1").value;
+		if (!(name && phone && email)) {
+			console.error("Missing required fields");
+			return;
+		}
 
-	if (name && phone && email) {
 		try {
 			__ctm.form.track(
 				"app.calltrackingmetrics.com", // the capture host
-				"FRT472ABB2C5B9B141A44F6B85642DF7AF9BF8F286ACD49D5E7F9F9D3FDAA4C44C6", // this FormReactor
-				"3523529868",
+				"FRT472ABB2C5B9B141A44F6B85642DF7AF9BF8F286ACD49D5E7F9F9D3FDAA4C44C6",
+				"3526752054",
 				{
-					country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
+					country_code: "1",
 					name: name,
 					phone: phone,
 					email: email,
@@ -25,39 +29,75 @@ form.addEventListener("submit", function () {
 		} catch (error) {
 			console.error("Error tracking form submission:", error);
 		}
-	}
+	});
+
+	document
+		.querySelectorAll("form[action='https://partyplusgrandrent.com/']")[2]
+		.addEventListener("submit", function () {
+			var firstName = document.querySelector("input[name='first_name']").value;
+			var lastName = document.querySelector("input[name='last_name']").value;
+			var name = firstName + " " + lastName;
+
+			var phone = document.querySelector("input[name='phone_number']").value;
+			var email = document.querySelector("input[name='email_address]").value;
+			var message = document.querySelector("textarea[name='message']").value;
+
+			if (!(name && phone && email)) {
+				console.error("Missing required fields");
+				return;
+			}
+
+			try {
+				__ctm.form.track(
+					"app.calltrackingmetrics.com", // the capture host
+					"FRT472ABB2C5B9B141A44F6B85642DF7AF9BF8F286ACD49D5E7F9F9D3FDAA4C44C6",
+					"3526752054",
+					{
+						country_code: "1",
+						name: name,
+						phone: phone,
+						email: email,
+						custom: {
+							message: message,
+						},
+					}
+				);
+			} catch (error) {
+				console.error("Error tracking form submission:", error);
+			}
+		});
 });
 
-var cartForm = document.getElementById("yith-ywraq-default-form");
+// Cart Form
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("yith-ywraq-default-form").addEventListener("submit", function () {
+		var firstName = document.getElementById("first_name").value;
+		var lastName = document.getElementById("last_name").value;
+		var fullName = firstName + " " + lastName;
 
-cartForm.addEventListener("submit", function () {
-	var firstName = document.getElementById("first_name").value;
-	var lastName = document.getElementById("last_name").value;
-	var fullName = firstName + " " + lastName;
+		var email = document.getElementById("email").value;
+		var phone = document.getElementById("Phone").value;
+		var message = document.getElementById("message").value;
 
-	var email = document.getElementById("email").value;
-	var phone = document.getElementById("Phone").value;
-	var message = document.getElementById("message").value;
-
-	if (fullName && email && phone) {
-		try {
-			// trigger this method once you have the form data captured within you web form.  This means you have to capture the form submission events and data.
-			__ctm.form.track(
-				"app.calltrackingmetrics.com", // the capture host
-				"FRT472ABB2C5B9B141A44F6B85642DF7AF9BF8F286ACD49D5E70DF6C10FC17526A7", // this FormReactor
-				"3523529868",
-				{
-					country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
-					name: fullName,
-					phone: phone,
-					email: email,
-					custom: {
-						message: message,
-					},
-				}
-			);
-		} catch (error) {
-			console.error("Error tracking form submission:", error);
+		if (fullName && email && phone) {
+			try {
+				__ctm.form.track(
+					"app.calltrackingmetrics.com", // the capture host
+					"FRT472ABB2C5B9B141A44F6B85642DF7AF9BF8F286ACD49D5E70DF6C10FC17526A7", // this FormReactor
+					"3526752054",
+					{
+						country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
+						name: fullName,
+						phone: phone,
+						email: email,
+						custom: {
+							message: message,
+						},
+					}
+				);
+			} catch (error) {
+				console.error("Error tracking form submission:", error);
+			}
 		}
-	}
+	});
 });
