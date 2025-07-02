@@ -141,3 +141,5 @@
 		}
 	});
 });
+
+document.querySelector("form[action='/fsg?pageId=84c6c91e-47b2-4738-9700-7f2995bb47a4&variant=a']");

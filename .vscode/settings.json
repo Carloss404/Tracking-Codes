@@ -1,6 +1,6 @@
 {
 	"editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
 	"terminal.integrated.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
-	"cSpell.words": ["ADCFE", "adgroup", "BDECC", "CCBAD", "DEDFCA", "EFCFBEAC", "FBCA", "Freshchat", "gclid", "jotform", "MYEJ", "rhcfvk", "yith", "ywraq"],
+	"cSpell.words": ["ABDE", "ADCFE", "adgroup", "BDECC", "CCBAD", "DEDFCA", "EFCFBEAC", "FBCA", "FFEAC", "Freshchat", "gclid", "jotform", "MYEJ", "rhcfvk", "yith", "ywraq"],
 	"editor.fontSize": 13
 }
