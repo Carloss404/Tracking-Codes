@@ -39,24 +39,3 @@ if (continueButton) {
 		}
 	});
 }
-
-// Target element inside shadow DOM
-var hostElement = document.querySelector("form-embed");
-
-var shadowRoot = hostElement.shadowRoot;
-
-shadowRoot.querySelector("button[type='submit']").addEventListener("click", function () {
-	var name = shadowRoot.getElementById("first_name").value;
-	var email = shadowRoot.getElementById("email").value;
-	var phone = shadowRoot.getElementById("phone_number").value;
-
-	if (!(name && phone && email)) {
-		console.error("Missing required fields");
-		return;
-	}
-
-	try {
-	} catch (error) {
-		console.error("Error tracking form submission:", error);
-	}
-});
