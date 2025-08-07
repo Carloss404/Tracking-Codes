@@ -33,6 +33,7 @@ function handleButtonClick() {
 			return true;
 		}
 	}
+
 	return false;
 }
 
