@@ -2,8 +2,15 @@ document.getElementById("lp-pom-button-3049").addEventListener("click", function
 	var name = document.querySelector("input[name='name']").value;
 	var phone = document.querySelector("input[name='phone_number']").value;
 	var email = document.querySelector("input[name='work_email']").value;
+	var availableLiquidCashOnHand = document.querySelector(
+		"input[name='available_liquid_cash_on_hand']:checked"
+	).value;
+	var partnershipType = document.querySelector("input[name='partnership_type']:checked").value;
+	var regionOfInterest = document.querySelector("input[name='region_of_interest']:selected").value;
+	var state = document.querySelector("input[name='state']:selected").value;
+	var province = document.querySelector("input[name='province']:selected").value;
 
-	if (!(name && phone && email)) {
+	if (!(name && phone && email && availableLiquidCashOnHand && partnershipType)) {
 		console.error("Missing required fields");
 		return;
 	}
