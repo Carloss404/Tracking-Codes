@@ -6,9 +6,9 @@ document.getElementById("lp-pom-button-3049").addEventListener("click", function
 		"input[name='available_liquid_cash_on_hand']:checked"
 	).value;
 	var partnershipType = document.querySelector("input[name='partnership_type']:checked").value;
-	var regionOfInterest = document.querySelector("input[name='region_of_interest']:selected").value;
-	var state = document.querySelector("input[name='state']:selected").value;
-	var province = document.querySelector("input[name='province']:selected").value;
+	var regionOfInterest = document.getElementById("region_of_interest").value || "";
+	var state = document.getElementById("state").value || "";
+	var province = document.getElementById("province").value || "";
 
 	if (!(name && phone && email && availableLiquidCashOnHand && partnershipType)) {
 		console.error("Missing required fields");
@@ -17,15 +17,21 @@ document.getElementById("lp-pom-button-3049").addEventListener("click", function
 
 	try {
 		__ctm.form.track(
-			"app.calltrackingmetrics.com", // the capture host
-			"FRT472ABB2C5B9B141AAB23844ABDE5C33648012FDA90D6128371217617D82C9672", // this FormReactor
-			"3466840259",
+			"app.calltrackingmetrics.com",
+			"FRT472ABB2C5B9B141AAB23844ABDE5C33648012FDA90D6128371217617D82C9672",
+			"3466806916",
 			{
-				country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
+				country_code: "1",
 				name: name,
 				phone: phone,
 				email: email,
-				custom: {},
+				custom: {
+					"Available Liquid Cash On Hand": availableLiquidCashOnHand,
+					"Partnership Type": partnershipType,
+					"Region Of Interest": regionOfInterest,
+					State: state,
+					Province: province,
+				},
 			}
 		);
 	} catch (error) {
