@@ -53,7 +53,6 @@
 					var phoneNumber = match[0];
 					a.href = "tel:" + phoneNumber.replace(/[^\d]/g, "");
 					a.appendChild(document.createTextNode(phoneNumber));
-					a.className = "yellow";
 					fragment.appendChild(a);
 
 					lastIndex = phoneNumberRegex.lastIndex;
