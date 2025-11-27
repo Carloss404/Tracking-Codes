@@ -5,7 +5,7 @@
 		return;
 	}
 
-	var regexPatterns = [/(Call us at\s*)([\d\-().\s]{10,})/g, /([\d\-().\s]{10,})/g];
+	var regexPatterns = [/(US Cell \s*)([\d\-().\s]{10,})/g, /([\d\-().\s]{10,})/g];
 
 	regexPatterns.forEach(function (pattern) {
 		body.innerHTML = body.innerHTML.replace(pattern, function (_, prefix, phoneNumber) {
@@ -53,7 +53,6 @@
 					var phoneNumber = match[0];
 					a.href = "tel:" + phoneNumber.replace(/[^\d]/g, "");
 					a.appendChild(document.createTextNode(phoneNumber));
-					a.className = "yellow";
 					fragment.appendChild(a);
 
 					lastIndex = phoneNumberRegex.lastIndex;
