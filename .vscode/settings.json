@@ -20,25 +20,15 @@
 		"contactbody",
 		"contactemail",
 		"contactname",
-<<<<<<< HEAD
-<<<<<<< HEAD
 		"correo",
-=======
-<<<<<<< HEAD
 		"COTIZACIÓN",
-=======
-		"correo",
->>>>>>> 2de8616 (add new WSM CTM form tracking)
->>>>>>> 660ef71ecb51b07091074f10b5304165e084cd44
-=======
-		"correo",
->>>>>>> fcec6cf (add new tracking code)
 		"DEDFCA",
 		"DFBCDF",
 		"DFDC",
 		"DFDD",
 		"DFFBAB",
 		"DGBCGFW",
+		"dmform",
 		"EFCFBEAC",
 		"electronico",
 		"elementor",
@@ -57,10 +47,7 @@
 		"jotform",
 		"JZBEE",
 		"lastname",
-<<<<<<< HEAD
 		"lazyloaded",
-=======
->>>>>>> 660ef71ecb51b07091074f10b5304165e084cd44
 		"mkto",
 		"mrjqq",
 		"MYEJ",
