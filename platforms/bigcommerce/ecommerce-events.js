@@ -1,0 +1,59 @@
+!(function () {
+	var e = window.dataLayer || [];
+	function t(e) {
+		for (var i in e)
+			null === e[i] || void 0 === e[i] || 0 === e[i].length || "" === e[i] ? delete e[i] : "object" == typeof e[i] && t(e[i]);
+		return e;
+	}
+	function i(e) {
+		return new DOMParser().parseFromString(e, "text/html").documentElement.textContent;
+	}
+	function a() {
+		let e = "{{customer.name}}";
+		return (e = e.split(" ")), t({ customer_id: "{{customer.id}}", email: "{{customer.email}}", first_name: e[0], last_name: e[1] });
+	}
+	function r() {
+		var e = [],
+			a = t({
+				item_name: i("{{name}}"),
+				item_id: "{{id}}",
+				sku: "{{sku}}",
+				price: parseFloat("{{price.without_tax.value}}"),
+				item_brand: i("{{brand.name}}"),
+				item_url: i("{{url}}"),
+				item_image_url: i("{{image.data}}"),
+				item_list_name: i("{{../category.name}}"),
+				item_list_id: "{{../category.id}}",
+			}),
+			r = parseInt("{{@index}}");
+		return (a[0 == r ? "item_category" : `item_category${r} + 1`] = i("{{this}}")), e.push(a), e;
+	}
+	function n() {
+		var e = {
+				item_name: i("{{product.title}}"),
+				item_id: "{{product.id}}",
+				price: parseFloat("{{product.price.without_tax.value}}"),
+				sku: "{{product.sku}}",
+				item_url: i("{{product.url}}"),
+				item_image_url: i("{{product.main_image.data}}"),
+			},
+			t = parseInt("{{@index}}");
+		return (e[0 == t ? "item_category" : `item_category${t} + 1`] = i("{{this}}")), e;
+	}
+	window.dataLayer || (window.dataLayer = e),
+		(window.eecGetShopper = a),
+		(window.eecGetItems = r),
+		(window.eecGetItem = n),
+		(window.eecPushDataLayer = function (t, i) {
+			e.push({ event: t, ecommerce: { items: i } });
+		}),
+		(window.eecHtmlDecode = i),
+		(window.eecClean = t),
+		(e.eec = {}),
+		(e.eec.items = r()),
+		(e.eec.item = n()),
+		(e.eec.cart_id = "{{ cart_id }}"),
+		(e.eec.shopper = a()),
+		(e.eec.item_list_id = "{{category.id}}"),
+		(e.eec.item_list_name = i("{{category.name}}"));
+})();
