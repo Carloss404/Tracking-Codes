@@ -40,3 +40,55 @@
 		button.addEventListener("click", handleSubmit);
 	});
 })();
+
+(function () {
+	// Find the chat widget container
+	var chatWidgetContainer = document.querySelector("div[class='intercom-with-namespace-4wz414 edrs4yi0']");
+
+	if (!chatWidgetContainer) return;
+
+	// Create a transparent overlay div
+	var overlay = document.createElement("div");
+	overlay.style.cssText = `
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1000;
+		opacity: 0;
+		cursor: pointer;
+	`;
+
+	// Make sure container is positioned
+	chatWidgetContainer.style.position = "relative";
+
+	// Add the overlay to capture clicks
+	chatWidgetContainer.appendChild(overlay);
+
+	// Track clicks on the overlay
+	overlay.addEventListener("click", function (event) {
+		event.stopPropagation();
+		console.log("Chat widget clicked (via overlay)");
+		console.log("Element:", chatWidgetContainer);
+
+		// Your tracking logic here
+		// dataLayer.push, GA, etc.
+
+		// Optional: Forward the click to the iframe after tracking
+		var iframe = chatWidgetContainer.querySelector("iframe[name='intercom-launcher-frame']");
+		if (iframe) {
+			// Temporarily disable overlay to allow iframe to receive click
+			overlay.style.pointerEvents = "none";
+
+			// Simulate click on iframe
+			setTimeout(function () {
+				iframe.click();
+				// Re-enable overlay after a short delay
+				setTimeout(function () {
+					overlay.style.pointerEvents = "auto";
+				}, 100);
+			}, 0);
+		}
+	});
+})();
