@@ -1,29 +1,32 @@
-var form = document.getElementById("form_contact22");
+(function () {
+	window.addEventListener(
+		"submit",
+		function () {
+			if (window.location.pathname.includes("estimates")) {
+				var name = document.querySelector("input[name='name']").value;
+				var email = document.querySelector("input[name='email']").value;
+				var phone = document.querySelector("input[name='phone']").value;
+				var itemType = document.querySelector("select[name='itemType']").value;
+				var damageDescription = document.querySelector("textarea[name='damageDescription']").value;
 
-form.addEventListener("submit", function () {
-	var name = document.getElementById("field_qh4icy3").value;
-	var email = document.getElementById("field_29yf4d3").value;
-	var phone = document.getElementById("field_lne4td2").value;
-	var message = document.getElementById("field_9jv0r13").value;
-
-	if (name && email && phone) {
-		try {
-			__ctm.form.track(
-				"app.calltrackingmetrics.com", // the capture host
-				"FRT472ABB2C5B9B141A07F6B927C551C1FFD48969DC4C8F85BA4A3CF322F4CEB372", // this FormReactor
-				"3479236907",
-				{
-					country_code: "1", // the expected country code e.g. +1, +44, +55, +61, etc... the plus is excluded
-					name: name,
-					phone: phone,
-					email: email,
-					custom: {
-						message: message,
-					},
+				if (!(name && email && phone && itemType && damageDescription)) {
+					console.error("Missing required fields");
+					return;
 				}
-			);
-		} catch (error) {
-			console.error("Error tracking form submission", error);
-		}
-	}
-});
+
+				try {
+					console.log("Form Values:", {
+						name: name,
+						email: email,
+						phone: phone,
+						itemType: itemType,
+						damageDescription: damageDescription,
+					});
+				} catch (error) {
+					console.error("Error tracking form submission", error);
+				}
+			}
+		},
+		true
+	);
+})();
