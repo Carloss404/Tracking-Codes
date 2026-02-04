@@ -1,15 +1,13 @@
 (function () {
-	var phoneLink = document.querySelector("a.elementor-button[href^='tel:']");
+	document.querySelectorAll("a[href^='tel:']").forEach(function (phoneLink) {
+		var href = phoneLink.getAttribute("href");
 
-	if (phoneLink) {
-		var currentHref = phoneLink.getAttribute("href");
+		var rawNumber = decodeURIComponent(href.replace("tel:", ""));
 
-		var decodedNumber = decodeURIComponent(currentHref.substring(4));
+		var formattedNumber = rawNumber.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "");
 
-		var cleanNumber = decodedNumber.replace(/\D/g, "");
-
-		if (cleanNumber) {
-			phoneLink.setAttribute("href", "tel:" + cleanNumber);
+		if (formattedNumber) {
+			phoneLink.setAttribute("href", "tel:" + formattedNumber);
 		}
-	}
+	});
 })();

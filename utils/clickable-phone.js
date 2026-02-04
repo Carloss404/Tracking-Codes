@@ -47,6 +47,8 @@
 					var a = document.createElement("a");
 					var phoneNumber = match[0];
 					a.href = "tel:" + phoneNumber.replace(/[^\d]/g, "");
+					a.style.textDecoration = "underline";
+					a.style.color = "inherit";
 					a.appendChild(document.createTextNode(phoneNumber));
 					fragment.appendChild(a);
 
